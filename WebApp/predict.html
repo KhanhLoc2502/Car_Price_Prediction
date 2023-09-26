@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap" rel="stylesheet"></head>
+    <title>Document</title>
+    <style>
+        html{
+            font-family: Helvetica, Arial, sans-serif;
+            
+        }
+        .container{
+           
+            background-image: url('https://www.reuters.com/resizer/szwDc21hWNisND_5iluPtLX7LQo=/1920x1005/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/UJULRTTCDFNBTEJAC4Y3SXIKW4.jpg');
+            background-position: center;
+            background-repeat: no-repeat; /* Do not repeat the image */
+            width: 100%;
+            height: 600px;
+
+        }
+        .fill-container{
+            padding: 70px 0;
+
+        }
+        .fill-prediction{
+            margin: 0  auto;
+            /* padding: 20px 30px; */
+            width: 70%;
+            background-color: rgba(54, 79, 75, 0.4);
+            box-shadow: 0 -1px 8px #2e040466;
+            color: #fff;
+            border: 0.05px solid #84323266;
+            border-radius: 10px;
+
+        }
+        .fill-prediction__title{
+            margin: 0 ;
+            background-color: #871111e9;
+            text-align: center;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+        }
+        .fill-prediction__content{
+            padding: 15px 30px
+
+            
+        }
+        .fill-prediction__content-list:first-child{
+            padding-top: 15px ;
+        }
+        .fill-prediction__content-list{
+            display: flex;
+        
+            align-items: center;
+            padding-bottom: 15px;
+        }
+        .fill-prediction__content-item{
+            flex-basis: 50%;
+            font-size: 15px;
+            display: flex;
+            
+            
+
+
+        }
+        .fill-prediction__content-list .fill-prediction__content-item:first-child{
+            padding-right: 20px;
+
+        } 
+      
+        .fill-prediction__content-item-name{
+            width: 30%;
+            font-size: 15px;
+
+        }
+        .fill-prediction__content-item-value{
+            height: 26px;
+            width: 70%;
+            outline: none;
+            border: none;
+            border-radius: 2px;
+        }
+          
+        .fill-prediction__content-item-btn{
+            margin: 10px 30%;
+            height: 30px;
+            width: 40%;
+            background-color:#871111e9;
+            color: #fff;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            
+        }
+        .fill-prediction__content-item-btn:hover{
+            background-color:rgba(40, 14, 14, 0.7);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="w-50"> -->
+    <div class="container">
+        <div class="fill-container">
+            <div class="fill-prediction">
+                <h1 class="fill-prediction__title">Car Price Prediction</h1>
+                <div class="fill-prediction__content">
+                    <form method="POST" action="{{ url_for('predict') }}">
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name"  for="hang">Hãng xe:</label>
+                                <input class="fill-prediction__content-item-value"  type="text" id="hang" name="hang" required>
+                            </div>
+    
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="ten">Tên xe:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="ten" name="ten" required>
+                            </div>
+                            
+                        </div>
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="loai">Loại xe:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="loai" name="loai" required>
+                            </div>
+                         
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="nam">Năm sản xuất:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="nam" name="nam" required>
+                            </div>
+                        </div>
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="xuatxu">Xuất xứ:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="xuatxu" name="xuatxu" required>
+                            </div>
+                            
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="tinh">Tỉnh thành:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="tinh" name="tinh" required>
+                            </div>
+                        </div>
+
+                       
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="quan">Quận huyện:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="quan" name="quan" required>
+                            </div>
+                            
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="km">Kilometer đã đi:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="km" name="km" required>
+                            </div>
+                        </div>
+                       
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="tinhtrang">Tình trạng:</label>
+                            <input class="fill-prediction__content-item-value" type="text" id="tinhtrang" name="tinhtrang" required>
+                            </div>
+                            
+                             <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="nhienlieu">Nhiên liệu:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="nhienlieu" name="nhienlieu" required>
+                            </div>
+                        </div>
+                        
+                        <div class="fill-prediction__content-list">
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="kieudang">Kiểu dáng:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="kieudang" name="kieudang" required>
+                            </div>
+                            
+                            <div class="fill-prediction__content-item">
+                                <label class="fill-prediction__content-item-name" for="hops">Hộp số:</label>
+                                <input class="fill-prediction__content-item-value" type="text" id="hops" name="hops" required>
+                            </div>
+                        </div>
+                        
+
+                        <input class="fill-prediction__content-item-btn" type="submit" value="Predict">
+                     </form>
+                </div>
+                
+                {% if result %}
+                <p>Đơn giá ước tính là: {{ result }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </div>
+
+  
+ </body>
+</html>
